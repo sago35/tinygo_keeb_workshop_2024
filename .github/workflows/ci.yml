@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  smoketest:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: smoketest
+      run: |
+        docker pull tinygo/tinygo-dev
+        docker run --rm -v $GITHUB_WORKSPACE:/workspace -w /workspace tinygo/tinygo-dev tinygo version
+        docker run --rm -v $GITHUB_WORKSPACE:/workspace -w /workspace tinygo/tinygo-dev /bin/sh -c "git config --global --add safe.directory /workspace && make smoketest"
+
+    - name: Upload uf2 files
+      uses: actions/upload-artifact@v4
+      with:
+        name: uf2-files
+        path: ./out/*.uf2
