@@ -345,6 +345,7 @@ zero-kb02 では OLED を上下逆に取り付けているのでソフトウェ�
 画面描画は原則として以下の Displayer interface に対応しているので、画面を回転できる Displayer を定義します。
 
 ```go
+// https://github.com/tinygo-org/drivers/blob/release/displayer.go
 type Displayer interface {
     // Size returns the current size of the display.
     Size() (x, y int16)
@@ -377,7 +378,7 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./10_oled_inverted/
 
 ### アニメーションさせる
 
-`display.ClearDisplay()` と `display.Display()` を用いることでちらつきなく画面を書き換えることができます。
+`display.ClearBuffer()` と `display.Display()` を用いることでちらつきなく画面を書き換えることができます。
 
 ```shell
 $ tinygo flash --target waveshare-rp2040-zero --size short ./11_oled_animation/
@@ -467,6 +468,10 @@ for {
         m.Release(mouse.Left)
     }
 }
+```
+
+```shell
+$ tinygo flash --target waveshare-rp2040-zero --size short ./15_hid_mouse/
 ```
 
 # sago35/tinygo-keyboard を使う
