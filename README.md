@@ -81,7 +81,7 @@ TinyGo Keeb Tour 2024 では [zero-kb02](https://www.waveshare.com/rp2040-zero.h
 * [GROVE コネクター](https://lab.seeed.co.jp/entry/2019/10/25/120432)
 * 背面 2x6 ピンソケット
 
-回路図等は以下から確認することができます。
+回路図等、ファームウェアは以下から確認することができます。
 
 * https://github.com/sago35/keyboards
     * [kicanvas](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fsago35%2Fkeyboards%2Ftree%2Fmain%2Fzero-kb02%2Fzero-kb02)
@@ -327,6 +327,8 @@ display.Configure(ssd1306.Config{
 $ tinygo flash --target waveshare-rp2040-zero --size short ./07_oled/
 ```
 
+※2024/08/04 時点で時々 OLED 描画が止まってしまうことがあります (現在調査中
+
 ### 図形を描画する
 
 ```shell
@@ -505,5 +507,16 @@ Vial は以下にあり、 WebHID API に対応した Edge / Chrome などから
 
 * https://vial.rocks/
 
+## 基本的な使い方
+
+使い方の詳細については以下に記載しました。
+
+* [sago35/tinygo-keyboard を用いて自作キーボードを作ろう](https://qiita.com/sago35/items/b008ed03cd403742e7aa)
+* [Create Your Own Keyboard with sago35/tinygo-keyboard](https://dev.to/sago35/create-your-own-keyboard-with-sago35tinygo-keyboard-4gbj)
 
 
+## zero-kb01 の firmware
+
+以下にあります。
+
+* https://github.com/sago35/keyboards
