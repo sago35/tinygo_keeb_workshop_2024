@@ -90,7 +90,7 @@ TinyGo Keeb Tour 2024 では [zero-kb02](https://www.waveshare.com/rp2040-zero.h
 
 はんだ付け等の手順はビルドガイドにて。
 
-* ビルドガイド (作成中)
+* [ビルドガイド](./buildguide.md)
 
 ### まずは動かしてみよう
 
@@ -515,7 +515,7 @@ Vial は以下にあり、 WebHID API に対応した Edge / Chrome などから
 * [Create Your Own Keyboard with sago35/tinygo-keyboard](https://dev.to/sago35/create-your-own-keyboard-with-sago35tinygo-keyboard-4gbj)
 
 
-## zero-kb01 の firmware
+## zero-kb02 の firmware
 
 以下にあります。
 
