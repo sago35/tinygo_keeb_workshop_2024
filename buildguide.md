@@ -437,7 +437,7 @@ Grove コネクターと同じで 1 ピンだけはんだ付けする。
 * https://github.com/sago35/keyboards/releases
     * zero-kb02.uf2
 
-Vial の matrix tester で核にしてもよい。  
+Vial の matrix tester で確認してもよい。  
 キーバインドも Vial から確認することができる。  
 
 * https://vial.rocks/
