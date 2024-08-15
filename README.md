@@ -100,7 +100,7 @@ RP2040 搭載のボードは BOOT / BOOTSEL と呼ばれているボタンを押
 
 ここでは以下を書き込みしてみてください。
 
-* [00_basic.uf2](./uf2/00_basic.uf2)
+* [00_basic.uf2](https://github.com/sago35/tinygo_keeb_workshop_2024/releases/download/0.1.0/00_basic.uf2)
 
 キースイッチ部の LED が光っていたら書き込み成功です。
 
