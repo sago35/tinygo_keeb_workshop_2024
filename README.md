@@ -68,7 +68,7 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="
 
 上記と同じ内容のファイルが以下にあります。
 
-* ./99-zero-kb02-udev.rules
+* [./99-zero-kb02-udev.rules](./99-zero-kb02-udev.rules)
 
 上記ファイルは以下のドキュメントから作成しています。
 詳細等を確認する場合は適宜参照してください。
@@ -288,6 +288,7 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./02_blinky2/
 `[:4]` だと合計 4 個の LED を変更します。
 
 ```go
+// ./02_blinky2/main.go
 ws.WriteRaw(colors[0][:i+1])
 ```
 
@@ -296,6 +297,7 @@ ws.WriteRaw(colors[0][:i+1])
 例えば以下のようになります。
 
 ```go
+// ./02_blinky2/main.go
 colors := []uint32{
     0xFFFFFFFF, // white
     0xFF0000FF, // green
@@ -311,18 +313,21 @@ colors := []uint32{
 Printf デバッグなどにも使えるし何かと使いどころのある USB CDC も実行しておきましょう。
 USB CDC は Universal Serial Bus Communications Device Class の略で、雑な説明としてはパソコンとマイコン間で通信を行うためのものです。
 説明するよりも実際に試したほうが分かりやすいので、まずは以下を実行してみてください。
-`--monitor` というオプションを追加する必要があります。
 
 ```shell
-$ tinygo flash --target waveshare-rp2040-zero --size short --monitor examples/serial
+$ tinygo flash --target waveshare-rp2040-zero --size short examples/serial
+
+$ tinygo monitor
 ```
 
 Windows で実行すると以下のようになります。
 
 ```
-$ tinygo flash --target waveshare-rp2040-zero --size short --monitor examples/serial
+$ tinygo flash --target waveshare-rp2040-zero --size short examples/serial
    code    data     bss |   flash     ram
    7836     108    3152 |    7944    3260
+
+$ tinygo monitor
 Connected to COM7. Press Ctrl-C to exit.
 hello world!
 hello world!
@@ -335,12 +340,14 @@ examples/serial は以下のようなソース ([./03_usbcdc-serial](./03_usbcdc
 こちらも待ち時間や、表示文字列の変更、あるいは fmt.Printf() を使った書き込み、などに変えてみてください。
 
 ```shell
-$ tinygo flash --target waveshare-rp2040-zero --size short --monitor ./03_usbcdc-serial/
+$ tinygo flash --target waveshare-rp2040-zero --size short ./03_usbcdc-serial/
 ```
 
 標準入力は以下のようなソース ([./04_usbcdc-echo/](./04_usbcdc-echo/)) で扱うことができます。
+改行は `Enter` / `Return` キーを押した後 `Ctrl-j` を押す必要があります。
 
 ```go
+// ./04_usbcdc-echo/main.go
 package main
 
 import (
@@ -366,6 +373,7 @@ tinygo-org/drivers にある encoders/quadrature を使うことができます�
 zero-kb02 用に設定を合わせたものは以下の通りです。
 
 ```
+// ./05_rotary/main.go
 enc := encoders.NewQuadratureViaInterrupt(
     machine.GPIO3,
     machine.GPIO4,
@@ -380,9 +388,11 @@ enc.Configure(encoders.QuadratureConfig{
 LED と連動させてみたりすると面白いでしょう。
 
 ```
-$ tinygo flash --target waveshare-rp2040-zero --size short --monitor ./05_rotary/
+$ tinygo flash --target waveshare-rp2040-zero --size short ./05_rotary/
    code    data     bss |   flash     ram
    8276     108    3624 |    8384    3732
+
+$ tinygo monitor
 Connected to COM7. Press Ctrl-C to exit.
 value:  -1
 value:  -2
@@ -398,12 +408,13 @@ value:  2
 
 ## ロータリーエンコーダーの押下状態を取得する
 
-ロー5アリーエンコーダーを押下すると GND と接続されて Low になります。
+ロータリーエンコーダーを押下すると GND と接続されて Low になります。
 (プルアップしておけば) 押下していない状態では High になります。
 
 基本的には以下のようなコードになります。
 
 ```go
+// ./13_rotary_button/main.go
 if !btn.Get() {
     println("pressed")
 } else {
@@ -412,7 +423,9 @@ if !btn.Get() {
 ```
 
 ```shell
-$ tinygo flash --target waveshare-rp2040-zero --size short --monitor ./13_rotary_button/
+$ tinygo flash --target waveshare-rp2040-zero --size short ./13_rotary_button/
+
+$ tinygo monitor
 ```
 
 ## アナログジョイスティック
@@ -421,9 +434,11 @@ $ tinygo flash --target waveshare-rp2040-zero --size short --monitor ./13_rotary
 なので以下のように扱うことができます。
 
 ```shell
-$ tinygo flash --target waveshare-rp2040-zero --size short --monitor ./06_joystick/
+$ tinygo flash --target waveshare-rp2040-zero --size short ./06_joystick/
    code    data     bss |   flash     ram
   56792    1536    3176 |   58328    4712
+
+$ tinygo monitor
 Connected to COM7. Press Ctrl-C to exit.
 7440 8000 false
 7130 7F90 true
@@ -442,6 +457,7 @@ tinygo-org/drivers にある ssd1306/i2c_128x64 を使うことができます�
 zero-kb02 用に設定を合わせたものは以下の通りです。
 
 ```go
+// ./07_oled/main.go
 machine.I2C0.Configure(machine.I2CConfig{
     Frequency: machine.TWI_FREQ_400KHZ,
     SDA:       machine.GPIO12,
@@ -498,6 +514,7 @@ type Displayer interface {
 struct に Displayer を埋め込み SetPixel の x および y の値を加工しています。
 
 ```go
+// ./10_oled_inverted/main.go
 type InvertedDisplay struct {
     drivers.Displayer
 }
@@ -543,6 +560,7 @@ matrix 配線は自作キーボードで広く使われている接続方式な�
 
 
 ```go
+// ./12_matrix_basic/main.go
 colPins[0].High()
 colPins[1].Low()
 colPins[2].Low()
@@ -576,6 +594,7 @@ TinyGo では `machine/usb/hid/keyboard` を import して `keyboard.Port()` を
 
 
 ```go
+// ./14_hid_keyboard/main.go
 kb := keyboard.Port()
 for {
     if !btn.Get() {
@@ -596,6 +615,7 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./14_hid_keyboard/
 以下のコードによりボタンの押下がマウスの左クリックになります。
 
 ```go
+// ./15_hid_mouse/main.go
 m := mouse.Port()
 for {
     if !btn.Get() {
