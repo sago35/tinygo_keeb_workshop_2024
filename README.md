@@ -16,19 +16,53 @@ TinyGo 0.26 + Wio Terminal という組み合わせで技術書「基礎から�
 ## TinyGo のインストール
 
 以下のインストールが必要です。
-TinyGo については、このページの記入時点の最新版である v0.27.0 の URL を記載しましたが、このハンズオンでは後述する dev branch 版 (開発最新版) を使うことを推奨します。
+TinyGo については、このページの記入時点の最新版である v0.32.0 の URL を記載しましたが、適宜最新バージョンを使用してください。
 
 * Git
     * https://git-scm.com/downloads
+    * Go / TinyGo には不要ですがこのハンズオン実施に対して必要です
 * Go
     * https://go.dev/dl/
 * TinyGo
     * https://github.com/tinygo-org/tinygo/releases/tag/v0.32.0
 
+ただし Go と TinyGo で Version の組み合わせがあるので注意が必要です。
+TinyGo は基本的に最新および直前 Version の Go と組み合わせて使う必要があります。
+
+| TinyGo | 対応する Go |
+| ------ | ----------- |
+| 0.32.0 | 1.19 - 1.22 |
+| 0.33.0 | 1.23 - 1.22 |
+
 それぞれの実行体に PATH が通っていれば使うことができます。
 少し Version が古いですが以下も参考になると思います。
 
 * [TinyGo のインストール](https://qiita.com/sago35/items/92b22e8cbbf99d0cd3ef#tinygo-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+
+### Linux での設定
+
+Linux で `tinygo flash` や `tinygo monitor` や `Vial` を使うには udev rules の設定が必要です。
+以下の内容で `/etc/udev/rules.d/99-zero-kb02-udev.rules` を作成し再起動してください。
+
+```
+# RP2040
+# ref: https://docs.platformio.org/en/latest/core/installation/udev-rules.html
+ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="[01]*", MODE:="0666", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
+
+# Vial
+# ref: https://get.vial.today/manual/linux-udev.html
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+```
+
+上記と同じ内容のファイルが以下にあります。
+
+* ./99-zero-kb02-udev.rules
+
+上記ファイルは以下のドキュメントから作成しています。
+詳細等を確認する場合は適宜参照してください。
+
+* https://docs.platformio.org/en/latest/core/installation/udev-rules.html
+* https://get.vial.today/manual/linux-udev.html
 
 ### TinyGo の dev branch 版
 
@@ -55,7 +89,7 @@ TinyGo は machine package など (Go を良く知っていても) 慣れてい�
 * https://tinygo.org/docs/guides/ide-integration/
 
 VSCode の場合は TinyGo という拡張をインストールすると良いです。
-Vim (+ vim-lsp) の場合は github.com/sago35/tinygo.vim を使ってみてください。
+Vim (+ vim-lsp) の場合は `github.com/sago35/tinygo.vim` を使ってみてください。
 
 日本語の情報としては以下に記載しています。
 
@@ -107,8 +141,8 @@ RP2040 搭載のボードは BOOT / BOOTSEL と呼ばれているボタンを押
 ### スイッチ、キーキャップの取り付け
 
 まずはキースイッチを刺さるように刺していきます。
-先ほど書き込んだ `00_basic.uf2` はキーが押下されているとその箇所の LED が光るようになっています。
-うまく光らない場合は、一度取り外して正しく差し込まれているか確認してください。
+先ほど書き込んだ `00_basic.uf2` はキーが押下されているとその箇所の LED が消えるようになっています。
+うまく動かない場合は、一度取り外して正しく差し込まれているか確認してください。
 
 # TinyGo の基本
 
