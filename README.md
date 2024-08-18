@@ -39,6 +39,18 @@ TinyGo は基本的に最新および直前 Version の Go と組み合わせて
 
 * [TinyGo のインストール](https://qiita.com/sago35/items/92b22e8cbbf99d0cd3ef#tinygo-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
+### Windows + WSL2
+
+WSL2 上の Ubuntu などには linux 版の TinyGo を使うことができます。
+しかし WSL2 から Windows ホスト上の USB につながっているものを直接見ることはできないため苦労が付きまといます。
+WSL2 を使う場合においても、基本的には Windows 版の TinyGo を Windows のパスにインストールするほうが良いです。
+この場合、 Go も Windows 版をインストールしておく必要があります。
+
+どうしても WSL2 上の TinyGo からやり取りしたい場合は以下のように usbipd を使う手もあります。
+しかし tinygo flash をするたびに usbipd の attach が必要となるためあまり快適ではない気がします。
+
+* [WSL2にインストールしたtinygoでtinygo monitorをraspberry pi picoで実行](https://qiita.com/kn12abc/items/d6bfc172cf08d9be6e1a)
+
 ### Linux での設定
 
 Linux で `tinygo flash` や `tinygo monitor` や `Vial` を使うには udev rules の設定が必要です。
