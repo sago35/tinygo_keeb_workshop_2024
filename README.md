@@ -126,7 +126,25 @@ TinyGo Keeb Tour 2024 では [zero-kb02](https://www.waveshare.com/rp2040-zero.h
 
 * [ビルドガイド](./buildguide.md)
 
-### まずは動かしてみよう
+
+# TinyGo の基本
+
+最初にこのリポジトリをどこかに git clone しておいてください。
+以降、このリポジトリのルートからコマンドを実行していきます。
+ソースコードを変更してみる場合は、ローカルのコードを修正してください。
+
+```
+$ git clone https://github.com/sago35/tinygo_keeb_workshop_2024
+
+$ cd tinygo_keeb_workshop_2024
+
+# VS Code などを立ち上げる
+$ code .
+```
+
+ソースコードは `./00_basic` や `./12_matrix_basic` などのパスにあります。
+
+## ビルド＋書き込み方法
 
 TinyGo ではコマンドラインからビルド＋書き込みを行うことができますが、ここでは手動での書き込み方法を学びます。
 RP2040 搭載のボードは BOOT / BOOTSEL と呼ばれているボタンを押しながらリセット (リセットボタンを押す、 USB に接続する、等) をすることでブートローダーに遷移することができます。
@@ -138,13 +156,67 @@ RP2040 搭載のボードは BOOT / BOOTSEL と呼ばれているボタンを押
 
 キースイッチ部の LED が光っていたら書き込み成功です。
 
-### スイッチ、キーキャップの取り付け
+※この書き込み方法は TinyGo 以外で作られた uf2 ファイルに対しても有効です
 
-まずはキースイッチを刺さるように刺していきます。
-先ほど書き込んだ `00_basic.uf2` はキーが押下されているとその箇所の LED が消えるようになっています。
-うまく動かない場合は、一度取り外して正しく差し込まれているか確認してください。
+上記の 00_basic.uf2 を自分で作成する場合は以下のコマンドを実行します。
+エラーメッセージ等が表示されず、 `00_basic.uf2` ができていれば成功です。
 
-# TinyGo の基本
+```
+$ tinygo build -o 00_basic.uf2 --target waveshare-rp2040-zero --size short ./00_basic/
+   code    data     bss |   flash     ram
+  20420     192    3240 |   20612    3432
+```
+
+## ビルド＋書き込み方法 (その2) + シリアルモニター
+
+tinygo flash コマンドを用いてビルドと書き込みを一度に実施することもできます。
+エラーメッセージ等が表示されなければ正常に書き込みが完了しています。
+Linux 環境で失敗する場合は、前述の udev rules の設定を確認してください。
+
+```
+$ tinygo flash --target waveshare-rp2040-zero --size short examples/serial
+   code    data     bss |   flash     ram
+   7836     108    3152 |    7944    3260
+```
+
+上記で書き込んだ `examples/serial` はシリアル出力に `hello world!` と表示する例です。
+以下で動作を確認することができます。
+
+```
+$ tinygo monitor
+Connected to COM7. Press Ctrl-C to exit.
+hello world!
+hello world!
+hello world!
+```
+
+うまく接続できない場合は port を調べて --port オプションを追加してください。
+waveshare-rp2040-zero は、 RP2040 マイコンを使うほかのボードと共通の USB VID/PID を使っているので Boards のところが正しく表示されないケースがありますが気にしないでください。
+
+```
+$ tinygo ports
+Port                 ID        Boards
+COM7                 2E8A:0003 waveshare-rp2040-zero
+
+$ tinygo monitor --port COM7
+Connected to COM7. Press Ctrl-C to exit.
+hello world!
+hello world!
+hello world!
+```
+
+`tinygo flash` と `tinygo monitor` を一つにまとめた `tinygo flash --monitor` という実行方法もあります。
+が、環境によっては接続先ポートを誤ったりするケースがあるため、うまく動かない場合は上記のように別で実行してください。
+
+```
+$ tinygo flash --target waveshare-rp2040-zero --size short --monitor examples/serial
+   code    data     bss |   flash     ram
+   7836     108    3152 |    7944    3260
+Connected to COM7. Press Ctrl-C to exit.
+hello world!
+hello world!
+hello world!
+```
 
 ## L チカ
 
@@ -158,12 +230,26 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./01_blinky1/
 以下の black や white のところに `color.Color` を設定することができます。
 
 ```go
+// 01_blinky1/main.go
 for {
     time.Sleep(time.Millisecond * 500)
     ws.PutColor(black)
     time.Sleep(time.Millisecond * 500)
     ws.PutColor(white)
 }
+```
+
+その他の色の例は以下になります。
+RGBA を指定して任意の色を設定することができます。
+0xFF を小さい値にすることで光り方を (ある程度) 弱めることができます。
+
+```
+red     = color.RGBA{R: 0xFF, G: 0x00, B: 0x00, A: 0x00}
+green   = color.RGBA{R: 0x00, G: 0xFF, B: 0x00, A: 0x00}
+blue    = color.RGBA{R: 0x00, G: 0x00, B: 0xFF, A: 0x00}
+yellow  = color.RGBA{R: 0xFF, G: 0xFF, B: 0x00, A: 0x00}
+cyan    = color.RGBA{R: 0x00, G: 0xFF, B: 0xFF, A: 0x00}
+magenta = color.RGBA{R: 0xFF, G: 0x00, B: 0xFF, A: 0x00}
 ```
 
 ## L チカ (その2)
@@ -205,6 +291,8 @@ colors := []uint32{
     0x0000FFFF, // blue
 }
 ```
+
+0xFF を小さい値にすることで光り方を (ある程度) 弱めることができます。
 
 ## USB CDCで Hello World
 
