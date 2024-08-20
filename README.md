@@ -23,8 +23,10 @@ TinyGo については、このページの記入時点の最新版である v0.
     * Go / TinyGo には不要ですがこのハンズオン実施に対して必要です
 * Go
     * https://go.dev/dl/
+        * install の詳細 : https://go.dev/doc/install
 * TinyGo
     * https://github.com/tinygo-org/tinygo/releases/tag/v0.32.0
+        * install の詳細 : https://tinygo.org/getting-started/install/
 
 ただし Go と TinyGo で Version の組み合わせがあるので注意が必要です。
 TinyGo は基本的に最新および直前 Version の Go と組み合わせて使う必要があります。
