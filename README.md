@@ -41,6 +41,17 @@ TinyGo は基本的に最新および直前 Version の Go と組み合わせて
 
 * [TinyGo のインストール](https://qiita.com/sago35/items/92b22e8cbbf99d0cd3ef#tinygo-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
+インストールできたかの確認は以下で実施することができます。
+
+```
+$ tinygo version
+tinygo version 0.33.0 windows/amd64 (using go version go1.22.5 and LLVM version 18.1.2)
+
+$ tinygo build -o out.uf2 --target waveshare-rp2040-zero --size short examples/serial
+   code    data     bss |   flash     ram
+   7836     108    3152 |    7944    3260
+```
+
 ### Windows + WSL2
 
 WSL2 上の Ubuntu などには linux 版の TinyGo を使うことができます。
