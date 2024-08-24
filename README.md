@@ -25,7 +25,7 @@ TinyGo については、このページの記入時点の最新版である v0.
     * https://go.dev/dl/
         * install の詳細 : https://go.dev/doc/install
 * TinyGo
-    * https://github.com/tinygo-org/tinygo/releases/tag/v0.32.0
+    * https://github.com/tinygo-org/tinygo/releases/latest
         * install の詳細 : https://tinygo.org/getting-started/install/
 
 ただし Go と TinyGo で Version の組み合わせがあるので注意が必要です。
