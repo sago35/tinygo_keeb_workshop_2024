@@ -4,28 +4,28 @@
 
 | No | 品名                            | 個数 | 備考 |
 |----|---------------------------------|------|------|
-| 1  | 基板                            | 1    |
+| 1  | 基板                            | 1    | [info](https://github.com/sago35/keyboards?tab=readme-ov-file#zero-kb02)
 | 2  | Grove コネクタ                  | 1    |
-| 3  | ダイオード                      | 12   |
-| 4  | ジョイスティック                | 1    |
+| 3  | ダイオード                      | 12   | 1N4148
+| 4  | ジョイスティック                | 1    | [RKJXV122400R (Alps Alpine)](https://akizukidenshi.com/catalog/g/g115951/)
 | 5  | ピンソケット (1x8)              | 1    |
 | 6  | ピンソケット (1x7)              | 1    |
-| 7  | OLED 液晶                       | 1    |
-| 8  | プルアップ抵抗                  | 1    |
+| 7  | OLED 液晶                       | 1    | SSD1306 128x64
+| 8  | プルアップ抵抗                  | 1    | 3.3K (1K - 10K)
 | 9  | L型ピンソケット 2x6             | 2    |
 | 10 | キースイッチ                    | 12   |
 | 11 | キーキャップ                    | 12   |
-| 12 | ソケット                        | 1    |
+| 12 | ソケット                        | 1    | MX socket
 | 13 | RP2040 Zero                     | 1    |
 | 14 | ロータリーエンコーダー          | 1    |
 | 15 | SK6812MINI-E                    | 12   | 実装済み
 | 16 | コム足                          | 1    |
 | 17 | USB ケーブル (A to C)           | 1    |
 | 18 | さらねじ 2.1x10                 | 6    |
-| 19 | ケース                          | 1    |
-| 20 | ロータリーエンコーダーノブ      | 1    |
-| 21 | ロータリーエンコーダーノブ (大) | 1    |
-| 22 | ジョイスティックノブ            | 1    |
+| 19 | ケース                          | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
+| 20 | ロータリーエンコーダーノブ      | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
+| 21 | ロータリーエンコーダーノブ (大) | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
+| 22 | ジョイスティックノブ            | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
 
 ## パーツ説明
 
