@@ -441,6 +441,8 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./13_rotary_button/
 $ tinygo monitor
 ```
 
+ロータリーエンコーダーを押すと、`tinygo monitor` を実行中の terminal に `pressed` が出力されます。
+
 ## アナログジョイスティック
 
 アナログジョイスティックは押し込みでデジタル値として、 XY の二軸に対してはアナログ値として認識されます。
@@ -687,3 +689,23 @@ Vial は以下にあり、 WebHID API に対応した Edge / Chrome などから
 以下にあります。
 
 * https://github.com/sago35/keyboards
+
+
+## トラブルシュート
+
+- プログラムの書き込みが出来ない
+
+`tinygo ports` コマンドでマイコンが認識されているか確認してください。正常に認識されていれば、`waveshare-rp2040-zero` が出力されます。
+
+```
+$ tinygo ports
+Port                 ID        Boards
+COM7                 2E8A:0003 waveshare-rp2040-zero
+```
+
+認識されていない場合は、マイコンをPCから外して挿し直してください。
+
+## 作例
+
+https://x.com/ysaito8015/status/1827626098450166185
+https://x.com/ysaito8015/status/1827630059580231788
