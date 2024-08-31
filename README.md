@@ -441,6 +441,8 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./13_rotary_button/
 $ tinygo monitor
 ```
 
+ロータリーエンコーダーを押すと、`tinygo monitor` を実行中の terminal に `pressed` が出力されます。
+
 ## アナログジョイスティック
 
 アナログジョイスティックは押し込みでデジタル値として、 XY の二軸に対してはアナログ値として認識されます。
@@ -599,6 +601,9 @@ $ tinygo flash --target waveshare-rp2040-zero --size short --monitor ./12_matrix
 
 ループを整理したり、キー数を可変にしたりすることで、キーボードファームウェアに近づいていきます。
 
+※ matrix 配線を詳しく知りたい方は以下をご覧ください
+https://blog.ikejima.org/make/keyboard/2019/12/14/keyboard-circuit.html
+
 ## Pin 入力を使った USB HID Keyboard
 
 ロータリーエンコーダーの押下状態を使って USB HID Keyboard を作ってみましょう。
@@ -622,6 +627,8 @@ for {
 $ tinygo flash --target waveshare-rp2040-zero --size short ./14_hid_keyboard/
 ```
 
+ロータリーエンコーダーを押して動作を確認しましょう。
+
 ## Pin 入力を使った USB HID Mouse
 
 ロータリーエンコーダーの押下状態を使って今度は USB HID Mouse を作ってみましょう。
@@ -642,6 +649,8 @@ for {
 ```shell
 $ tinygo flash --target waveshare-rp2040-zero --size short ./15_hid_mouse/
 ```
+
+ロータリーエンコーダーを押して動作を確認しましょう。
 
 # sago35/tinygo-keyboard を使う
 
@@ -687,3 +696,23 @@ Vial は以下にあり、 WebHID API に対応した Edge / Chrome などから
 以下にあります。
 
 * https://github.com/sago35/keyboards
+
+
+## トラブルシュート
+
+- プログラムの書き込みが出来ない
+
+`tinygo ports` コマンドでマイコンが認識されているか確認してください。正常に認識されていれば、`waveshare-rp2040-zero` が出力されます。
+
+```
+$ tinygo ports
+Port                 ID        Boards
+COM7                 2E8A:0003 waveshare-rp2040-zero
+```
+
+認識されていない場合は、マイコンをPCから外して挿し直してください。
+
+## 作例
+
+https://x.com/ysaito8015/status/1827626098450166185
+https://x.com/ysaito8015/status/1827630059580231788
