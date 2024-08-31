@@ -601,6 +601,9 @@ $ tinygo flash --target waveshare-rp2040-zero --size short --monitor ./12_matrix
 
 ループを整理したり、キー数を可変にしたりすることで、キーボードファームウェアに近づいていきます。
 
+※ matrix 配線を詳しく知りたい方は以下をご覧ください
+https://blog.ikejima.org/make/keyboard/2019/12/14/keyboard-circuit.html
+
 ## Pin 入力を使った USB HID Keyboard
 
 ロータリーエンコーダーの押下状態を使って USB HID Keyboard を作ってみましょう。
@@ -624,6 +627,8 @@ for {
 $ tinygo flash --target waveshare-rp2040-zero --size short ./14_hid_keyboard/
 ```
 
+ロータリーエンコーダーを押して動作を確認しましょう。
+
 ## Pin 入力を使った USB HID Mouse
 
 ロータリーエンコーダーの押下状態を使って今度は USB HID Mouse を作ってみましょう。
@@ -644,6 +649,8 @@ for {
 ```shell
 $ tinygo flash --target waveshare-rp2040-zero --size short ./15_hid_mouse/
 ```
+
+ロータリーエンコーダーを押して動作を確認しましょう。
 
 # sago35/tinygo-keyboard を使う
 
