@@ -28,20 +28,25 @@ func main() {
 	display.ClearDisplay()
 	time.Sleep(50 * time.Millisecond)
 
-	invDisplay := InvertedDisplay{&display}
+	rotDisplay := RotatedDisplay{&display}
 
 	white := color.RGBA{R: 0xFF, G: 0xFF, B: 0xFF, A: 0xFF}
 
-	tinyfont.WriteLine(&invDisplay, &freemono.Bold9pt7b, 5, 10, "hello", white)
-	tinyfont.WriteLine(&invDisplay, &gophers.Regular32pt, 5, 50, "ABCEF", white)
+	tinyfont.WriteLine(&rotDisplay, &freemono.Bold9pt7b, 5, 10, "hello", white)
+	tinyfont.WriteLine(&rotDisplay, &gophers.Regular58pt, 10, 70, "B", white)
+	tinyfont.WriteLine(&rotDisplay, &gophers.Regular58pt, 10, 110, "H", white)
 	display.Display()
 }
 
-type InvertedDisplay struct {
+type RotatedDisplay struct {
 	drivers.Displayer
 }
 
-func (d *InvertedDisplay) SetPixel(x, y int16, c color.RGBA) {
-	sx, sy := d.Displayer.Size()
-	d.Displayer.SetPixel(sx-x, sy-y, c)
+func (d *RotatedDisplay) Size() (x, y int16) {
+	return y, x
+}
+
+func (d *RotatedDisplay) SetPixel(x, y int16, c color.RGBA) {
+	_, sy := d.Displayer.Size()
+	d.Displayer.SetPixel(y, sy-x, c)
 }

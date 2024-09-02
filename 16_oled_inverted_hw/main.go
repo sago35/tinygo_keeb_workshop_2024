@@ -21,11 +21,12 @@ func main() {
 
 	display := ssd1306.NewI2C(machine.I2C0)
 	display.Configure(ssd1306.Config{
-		Address:  0x3C,
-		Width:    128,
-		Height:   64,
-		Rotation: drivers.Rotation180,
+		Address: 0x3C,
+		Width:   128,
+		Height:  64,
+		//Rotation: drivers.Rotation180,
 	})
+	display.SetRotation(drivers.Rotation180)
 	display.ClearDisplay()
 	time.Sleep(50 * time.Millisecond)
 

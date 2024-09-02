@@ -508,7 +508,37 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./09_oled_tinyfont/
 
 ### 画面を回転する
 
-zero-kb02 では OLED を上下逆に取り付けているのでソフトウェアで画面を回転させる必要があります。
+zero-kb02 では OLED を上下逆に取り付けているので何らかの方法で画面を回転させる必要があります。
+ここではハードウェアにより反転させてみます。
+
+下記のように Config の Rotation で回転させることができます。
+SSD1306 の場合は `Rotation0` (回転無し) と `Rotation180` (反転) のみ使用できます。
+
+```go
+// ./10_oled_rotated/main.go
+display.Configure(ssd1306.Config{
+    Address:  0x3C,
+    Width:    128,
+    Height:   64,
+    Rotation: drivers.Rotation180,
+})
+```
+
+Configure() 時以外でも `SetRotation()` により回転させることができます。
+
+```go
+display.SetRotation(drivers.Rotation180)
+```
+
+```shell
+$ tinygo flash --target waveshare-rp2040-zero --size short ./16_oled_inverted_hw/
+```
+
+### 画面を 90 度回転する
+
+ハードウェアにより回転無しもしくは反転を実施できました。
+しかし、場合によっては 90 度回転させてディスプレイを縦長で使いたいケースがあります。
+この場合はソフトウェアにより回転させる必要があります。
 画面描画は原則として以下の Displayer interface に対応しているので、画面を回転できる Displayer を定義します。
 
 ```go
@@ -526,22 +556,26 @@ type Displayer interface {
 ```
 
 ここでは以下を定義しました。
-struct に Displayer を埋め込み SetPixel の x および y の値を加工しています。
+struct に Displayer を埋め込み Size および SetPixel の x および y の値を加工しています。
 
 ```go
-// ./10_oled_inverted/main.go
-type InvertedDisplay struct {
-    drivers.Displayer
+// ./16_oled_inverted_hw/main.go
+type RotatedDisplay struct {
+	drivers.Displayer
 }
 
-func (d *InvertedDisplay) SetPixel(x, y int16, c color.RGBA) {
-    sx, sy := d.Displayer.Size()
-    d.Displayer.SetPixel(sx-x, sy-y, c)
+func (d *RotatedDisplay) Size() (x, y int16) {
+	return y, x
+}
+
+func (d *RotatedDisplay) SetPixel(x, y int16, c color.RGBA) {
+	_, sy := d.Displayer.Size()
+	d.Displayer.SetPixel(y, sy-x, c)
 }
 ```
 
 ```shell
-$ tinygo flash --target waveshare-rp2040-zero --size short ./10_oled_inverted/
+$ tinygo flash --target waveshare-rp2040-zero --size short ./10_oled_rotated/
 ```
 
 ### アニメーションさせる
