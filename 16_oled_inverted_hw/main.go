@@ -21,27 +21,17 @@ func main() {
 
 	display := ssd1306.NewI2C(machine.I2C0)
 	display.Configure(ssd1306.Config{
-		Address: 0x3C,
-		Width:   128,
-		Height:  64,
+		Address:  0x3C,
+		Width:    128,
+		Height:   64,
+		Rotation: drivers.Rotation180,
 	})
 	display.ClearDisplay()
 	time.Sleep(50 * time.Millisecond)
 
-	invDisplay := InvertedDisplay{&display}
-
 	white := color.RGBA{R: 0xFF, G: 0xFF, B: 0xFF, A: 0xFF}
 
-	tinyfont.WriteLine(&invDisplay, &freemono.Bold9pt7b, 5, 10, "hello", white)
-	tinyfont.WriteLine(&invDisplay, &gophers.Regular32pt, 5, 50, "ABCEF", white)
+	tinyfont.WriteLine(&display, &freemono.Bold9pt7b, 5, 10, "hello", white)
+	tinyfont.WriteLine(&display, &gophers.Regular32pt, 5, 50, "ABCEF", white)
 	display.Display()
-}
-
-type InvertedDisplay struct {
-	drivers.Displayer
-}
-
-func (d *InvertedDisplay) SetPixel(x, y int16, c color.RGBA) {
-	sx, sy := d.Displayer.Size()
-	d.Displayer.SetPixel(sx-x, sy-y, c)
 }

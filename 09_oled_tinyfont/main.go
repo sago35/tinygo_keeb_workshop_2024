@@ -13,7 +13,7 @@ import (
 
 func main() {
 	machine.I2C0.Configure(machine.I2CConfig{
-		Frequency: machine.TWI_FREQ_400KHZ,
+		Frequency: 2.8 * machine.MHz,
 		SDA:       machine.GPIO12,
 		SCL:       machine.GPIO13,
 	})
