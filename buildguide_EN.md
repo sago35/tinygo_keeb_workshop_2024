@@ -1,5 +1,9 @@
 # Build guide
 
+Japanese version is below.
+
+* [build guide (日本語)](./buildguide.md)
+
 ## parts list
 
 | No | Item name                            | Quantity | Notes |
@@ -138,11 +142,6 @@ Soldered to the board in inverted position.
 
 ![](./images/parts15.jpg)
 
-
-The correct orientation of the LEDs is to match the notch on one of its legs to the corner of the solkscreen.
-
-![](./images/bg10_detail.jpg)
-
 ### Rubber feet
 
 Stick them on the bottom of the case to prevent slipping.
@@ -265,7 +264,9 @@ Once all the pins have been soldered, remove them from the socket.
 
 ## ![Work surface - back](https://img.shields.io/badge/Work_surface-back-a42e4f) RGB LED (SK6812MINI-E)
 
-(Omitted as already installed)
+The correct orientation of the LEDs is to match the notch on one of its legs to the corner of the solkscreen.
+
+![](./images/bg10_detail.jpg)
 
 
 ## ![Work surface - back](https://img.shields.io/badge/Work_surface-back-a42e4f) Key switch socket

@@ -1,5 +1,9 @@
 # Build guide
 
+English version is below.
+
+* [build guide (English)](./buildguide_EN.md)
+
 ## parts list
 
 | No | 品名                            | 個数 | 備考 |
@@ -18,7 +22,7 @@
 | 12 | ソケット                        | 1    | MX socket
 | 13 | RP2040 Zero                     | 1    |
 | 14 | ロータリーエンコーダー          | 1    |
-| 15 | SK6812MINI-E                    | 12   | 実装済み
+| 15 | RGB LED                         | 12   | SK6812MINI-E (実装済み)
 | 16 | コム足                          | 1    |
 | 17 | USB ケーブル (A to C)           | 1    |
 | 18 | さらねじ 2.1x10                 | 6    |
@@ -265,7 +269,9 @@ USBソケットおよび白いボタンがある方が表側になるので、�
 
 ## ![作業面 - 裏](https://img.shields.io/badge/作業面-裏-a42e4f) RGB LED (SK6812MINI-E)
 
-(実装済みのため省略)  
+RGB LEDは、足の切り欠きとシルクスクリーンの角を合わせた向きにしてください。  
+
+![](./images/bg10_detail.jpg)
 
 
 ## ![作業面 - 裏](https://img.shields.io/badge/作業面-裏-a42e4f) スイッチソケット
@@ -300,6 +306,8 @@ USBソケットおよび白いボタンがある方が表側になるので、�
 もう一か所はんだ付けする。  
 
 ![](./images/bg16.jpg)
+
+## ![作業面 - 裏](https://img.shields.io/badge/作業面-裏-a42e4f) ジョイスティック
 
 裏返してすべての箇所をはんだ付けする。  
 矢印の 4 箇所ははんだ付けを省略しても良い (はんだ付けしても良い。  

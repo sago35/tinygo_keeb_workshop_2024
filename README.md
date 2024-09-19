@@ -1,15 +1,14 @@
-# お知らせ
-
-TinyGo 0.26 + Wio Terminal という組み合わせで技術書「基礎から学ぶ TinyGoの組込み開発」 (2022/11/12 発売) を執筆しました。本ページと合わせて確認してみてください。
-
-* https://sago35.hatenablog.com/entry/2022/11/04/230919
-
-----
+# tinygo_keeb_workshop_2024
 
 ![](./images/zero-kb02.jpg)
 
 このページは 2024/08/04 からスタートする TinyGo Keeb Tour 2024 用の記事です。
 不明点はこのリポジトリの Issue や [twitter:sago35tk](https://x.com/sago35tk) で質問いただければサポートします。
+
+ハードウェアの組み立ては以下を参照してください。
+
+* [ビルドガイド](./buildguide.md)
+* [build guide (english)](./buildguide_EN.md)
 
 # 環境設定
 
@@ -150,6 +149,7 @@ TinyGo Keeb Tour 2024 では [zero-kb02](https://www.waveshare.com/rp2040-zero.h
 はんだ付け等の手順はビルドガイドにて。
 
 * [ビルドガイド](./buildguide.md)
+* [build guide (english)](./buildguide_EN.md)
 
 
 # TinyGo の基本
@@ -751,3 +751,9 @@ COM7                 2E8A:0003 waveshare-rp2040-zero
 https://x.com/ysaito8015/status/1827626098450166185  
 https://x.com/ysaito8015/status/1827630059580231788  
 https://x.com/sago35tk/status/1830208709471223966  
+
+# お知らせ
+
+TinyGo 0.26 + Wio Terminal という組み合わせで技術書「基礎から学ぶ TinyGoの組込み開発」 (2022/11/12 発売) を執筆しました。本ページと合わせて確認してみてください。
+
+* https://sago35.hatenablog.com/entry/2022/11/04/230919
