@@ -12,7 +12,7 @@ English version is below.
 | 2  | Grove コネクタ                  | 1    |
 | 3  | ダイオード                      | 12   | 1N4148
 | 4  | ジョイスティック                | 1    | [RKJXV122400R (Alps Alpine)](https://akizukidenshi.com/catalog/g/g115951/)
-| 5  | ピンソケット (1x8)              | 1    |
+| 5  | ピンソケット (1x8)              | 2    |
 | 6  | ピンソケット (1x7)              | 1    |
 | 7  | OLED 液晶                       | 1    | SSD1306 128x64
 | 8  | プルアップ抵抗                  | 2    | 3.3K (1K - 10K)
