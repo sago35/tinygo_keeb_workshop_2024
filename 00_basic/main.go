@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"image/color"
 	"machine"
 	"time"
 
@@ -22,10 +21,6 @@ func NewWS2812B(pin machine.Pin) *WS2812B {
 	return &WS2812B{
 		ws: ws,
 	}
-}
-
-func (ws *WS2812B) PutColor(c color.Color) {
-	ws.ws.PutColor(c)
 }
 
 func (ws *WS2812B) WriteRaw(rawGRB []uint32) error {
