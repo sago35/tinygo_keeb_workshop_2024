@@ -751,6 +751,7 @@ COM7                 2E8A:0003 waveshare-rp2040-zero
 https://x.com/ysaito8015/status/1827626098450166185  
 https://x.com/ysaito8015/status/1827630059580231788  
 https://x.com/sago35tk/status/1830208709471223966  
+https://x.com/Ryu_07_29/status/1847921967070163377
 
 # お知らせ
 
