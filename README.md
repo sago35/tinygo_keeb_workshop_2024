@@ -126,8 +126,8 @@ Vim (+ vim-lsp) の場合は `github.com/sago35/tinygo.vim` を使ってみて�
 
 # 開発対象
 
-TinyGo Keeb Tour 2024 では [zero-kb02](https://www.waveshare.com/rp2040-zero.htm) という自作キーボード／マクロパッドを使用します。
-マイコンは RP2040 (Cortex M0+) で、マイコンボードは Waveshare RP2040-Zero を使用しています。
+TinyGo Keeb Tour 2024 では zero-kb02 という自作キーボード／マクロパッドを使用します。
+マイコンは RP2040 (Cortex M0+) で、マイコンボードは [Waveshare RP2040-Zero](https://www.waveshare.com/rp2040-zero.htm) を使用しています。
 
 ![](./images/zero-kb02.jpg)
 
@@ -143,10 +143,10 @@ TinyGo Keeb Tour 2024 では [zero-kb02](https://www.waveshare.com/rp2040-zero.h
 * [GROVE コネクター](https://lab.seeed.co.jp/entry/2019/10/25/120432)
 * 背面 2x6 ピンソケット
 
-回路図等、ファームウェアは以下から確認することができます。
+回路図、ファームウェア、ピン配置等は以下から確認することができます。
 
 * https://github.com/sago35/keyboards
-    * [kicanvas](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fsago35%2Fkeyboards%2Ftree%2Fmain%2Fzero-kb02%2Fzero-kb02)
+    * 回路図 : [kicanvas](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fsago35%2Fkeyboards%2Ftree%2Fmain%2Fzero-kb02%2Fzero-kb02)
 
 ## 組み立て
 
