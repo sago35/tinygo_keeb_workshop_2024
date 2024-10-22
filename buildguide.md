@@ -1,5 +1,10 @@
 # Build guide
 
+ここでは、はんだ付けや組み立てに関する情報を扱います。  
+このページへ QR コードはこちらです。  
+
+![](./images/qr_buildguide.png)
+
 English version is below.
 
 * [build guide (English)](./buildguide_EN.md)
@@ -16,16 +21,16 @@ English version is below.
 | 6  | ピンソケット (1x7)              | 1    |
 | 7  | OLED 液晶                       | 1    | SSD1306 128x64
 | 8  | プルアップ抵抗                  | 2    | 3.3K (1K - 10K)
-| 9  | L型ピンソケット 2x6             | 2    |
+| 9  | L型ピンソケット 2x6             | 1    |
 | 10 | キースイッチ                    | 12   |
 | 11 | キーキャップ                    | 12   |
-| 12 | ソケット                        | 1    | MX socket
+| 12 | ソケット                        | 12   | MX socket
 | 13 | RP2040 Zero                     | 1    |
 | 14 | ロータリーエンコーダー          | 1    |
 | 15 | RGB LED                         | 12   | SK6812MINI-E (実装済み)
-| 16 | コム足                          | 1    |
+| 16 | コム足                          | 4    |
 | 17 | USB ケーブル (A to C)           | 1    |
-| 18 | さらねじ 2.1x10                 | 6    |
+| 18 | さらねじ 2.1x10                 | 4    |
 | 19 | ケース                          | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
 | 20 | ロータリーエンコーダーノブ      | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
 | 21 | ロータリーエンコーダーノブ (大) | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
@@ -51,7 +56,7 @@ I2C 信号である SCL / SDA は OLED と共有になっていることに注�
 Grove 接続可能な拡張ボードは多数販売されています。  
 zero-kb02 で使えるのは 3.3V I2C で使えるものに限定されます。  
 
-* https://www.switch-science.com/search?type=article%2Cpage%2Cproduct&q=Grove*
+* https://www.switch-science.com/search?type=article%2Cpage%2Cproduct&q=Grove
     * https://www.switch-science.com/search?type=article%2Cpage%2Cproduct&q=Grove*+I2C* ← I2C で絞り込み
 
 ### ダイオード
@@ -96,7 +101,7 @@ I2C 接続の OLED (単色) です。
 
 ### プルアップ抵抗
 
-I2C 用の 2.2kΩ抵抗です。  
+I2C 用の 3.3kΩ抵抗です。  
 
 ![](./images/parts08.jpg)
 
@@ -190,8 +195,31 @@ RP2040 というマイコンが搭載されたマイコンボードです。
 各項目はそれぞれ表面から作業するものと、裏面から作業するものがあります。  
 作業開始時点の向きを以下のバッジで記載しているので参考にしてください。  
 
-* ![作業面 - 表](https://img.shields.io/badge/作業面-表-2ea44f)
-* ![作業面 - 裏](https://img.shields.io/badge/作業面-裏-a42e4f)
+## ![作業面 - 表](https://img.shields.io/badge/作業面-表-2ea44f)  
+
+表面は完成すると以下のようになります。  
+
+![](./images/board_front.jpg)
+
+## ![作業面 - 裏](https://img.shields.io/badge/作業面-裏-a42e4f)  
+
+裏面は完成すると以下のようになります。  
+
+![](./images/board_back.jpg)
+
+## 分解
+
+最初に配布した一式を分解します。  
+以下の手順で分解してください。  
+今後の工程では作業面を必ず確認しながら進めてください。  
+
+1. ロータリーエンコーダーのノブを取り外す
+2. 裏面のねじ x 4 を取り外す
+3. 分解するとともに表面に印をつける
+
+以降、表裏がとても大事なので印を見つつ意識してください。  
+
+![](./images/partsxx.jpg)
 
 
 ## 作業台の組み立て

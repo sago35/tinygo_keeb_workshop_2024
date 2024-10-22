@@ -6,30 +6,30 @@ Japanese version is below.
 
 ## parts list
 
-| No | Item name                            | Quantity | Notes |
-|----|---------------------------------|------|------|
-| 1  | PCB                            | 1    | [info](https://github.com/sago35/keyboards?tab=readme-ov-file#zero-kb02)
-| 2  | Grove connector                 | 1    |
-| 3  | Diode                      | 12   | 1N4148
-| 4  | Joystick                | 1    | [RKJXV122400R (Alps Alpine)](https://akizukidenshi.com/catalog/g/g115951/)
-| 5  | Pin socket (1x8)              | 2   |
-| 6  | Pin socket (1x7)              | 1    |
-| 7  | OLED display                       | 1    | SSD1306 128x64
-| 8  | Pull-up resistor                  | 2    | 3.3K (1K - 10K)
-| 9  | L-shaped pin socket (2x6)             | 1    |
-| 10 | Key switch                    | 12   |
-| 11 | Key cap                    | 12   |
-| 12 | Key socket                        | 1    | MX socket
-| 13 | RP2040 Zero                     | 1    |
-| 14 | Rotary encoder          | 1    |
-| 15 | RGB LED                     | 12   | SK6812MINI-E
-| 16 | ruber foot                          | 1    |
-| 17 | USB-C cable            | 1    | 
-| 18 | Flathead screw 2.1x10                 | 4    | 2x10 also works
-| 19 | Case                         | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
-| 20 | Rotary encoder knob     | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
+| No | Item name                 | Quantity | Notes |
+|----|---------------------------|------|------|
+| 1  | PCB                       | 1    | [info](https://github.com/sago35/keyboards?tab=readme-ov-file#zero-kb02)
+| 2  | Grove connector           | 1    |
+| 3  | Diode                     | 12   | 1N4148
+| 4  | Joystick                  | 1    | [RKJXV122400R (Alps Alpine)](https://akizukidenshi.com/catalog/g/g115951/)
+| 5  | Pin socket (1x8)          | 2    |
+| 6  | Pin socket (1x7)          | 1    |
+| 7  | OLED display              | 1    | SSD1306 128x64
+| 8  | Pull-up resistor          | 2    | 3.3K (1K - 10K)
+| 9  | L-shaped pin socket (2x6) | 1    |
+| 10 | Key switch                | 12   |
+| 11 | Key cap                   | 12   |
+| 12 | Key socket                | 12   | MX socket
+| 13 | RP2040 Zero               | 1    |
+| 14 | Rotary encoder            | 1    |
+| 15 | RGB LED                   | 12   | SK6812MINI-E
+| 16 | ruber foot                | 4    |
+| 17 | USB-C cable               | 1    |
+| 18 | Flathead screw 2.1x10     | 4    | 2x10 also works
+| 19 | Case                      | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
+| 20 | Rotary encoder knob       | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
 | 21 | Large rotary encoder knob | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
-| 22 | Joystick hat            | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
+| 22 | Joystick hat              | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
 
 ## Component descriptions
 
@@ -50,8 +50,8 @@ Be careful as SCL/SDA signals (I²C) are shared with the OLED display.
 There are many expansion boards available for Grove.
 The ones that can be used with zero-kb02 are limited to those that can be used with 3.3V I2C.
 
-* https://www.switch-science.com/search?type=article%2Cpage%2Cproduct&q=Grove*
-* https://www.switch-science.com/search?type=article%2Cpage%2Cproduct&q=Grove*+I2C* ← Filtered by I2C 
+* https://www.switch-science.com/search?type=article%2Cpage%2Cproduct&q=Grove
+    * https://www.switch-science.com/search?type=article%2Cpage%2Cproduct&q=Grove*+I2C* ← Filtered by I2C
 
 ### Diode
 

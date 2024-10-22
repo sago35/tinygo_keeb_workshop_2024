@@ -10,6 +10,10 @@
 * [ビルドガイド](./buildguide.md)
 * [build guide (english)](./buildguide_EN.md)
 
+このページへ QR コードはこちら。  
+
+![](./images/qr_tinygo_keeb_tour_2024_top.png)
+
 # 環境設定
 
 ## TinyGo のインストール
