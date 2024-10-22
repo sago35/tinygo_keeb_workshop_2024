@@ -247,6 +247,37 @@ hello world!
 hello world!
 ```
 
+### macOS 15 Sequoia で tinygo flash 出来ない場合
+
+`$TINYGOROOT/targets/rp2040.json` の `msd-volume-name` に `NO NAME` を追加してください。  
+$TINYGOROOT は `tinygo env` で調べることができます。  
+
+変更後の JSON ファイルは以下です。  
+
+```json
+{
+    "inherits": ["cortex-m0plus"],
+    "build-tags": ["rp2040", "rp"],
+    "flash-1200-bps-reset": "true",
+    "flash-method": "msd",
+    "serial": "usb",
+    "msd-volume-name": ["RPI-RP2", "NO NAME"],
+    "msd-firmware-name": "firmware.uf2",
+    "binary-format": "uf2",
+    "uf2-family-id": "0xe48bff56",
+    "rp2040-boot-patch": true,
+    "extra-files": [
+        "src/device/rp/rp2040.s"
+    ],
+    "linkerscript": "targets/rp2040.ld",
+    "openocd-interface": "picoprobe",
+    "openocd-transport": "swd",
+    "openocd-target": "rp2040"
+}
+```
+
+* https://github.com/tinygo-org/tinygo/issues/4519
+
 ## L チカ
 
 以下を実行してください。
