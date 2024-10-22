@@ -731,6 +731,19 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./15_hid_mouse/
 
 ロータリーエンコーダーを押して動作を確認しましょう。
 
+## MIDI を使ってみる
+
+TinyGo は USB MIDI に対応しているので、 MIDI 音源にしたり、 MIDI 楽器にすることができます。  
+12 個のキーおよびロータリーエンコーダーの押し込みを使用することができます。  
+
+```
+$ tinygo flash --target waveshare-rp2040-zero --size short ./18_midi/
+```
+
+作成後は例えば以下のようなサイトで試すことができます。  
+
+* https://midi.city/
+
 # sago35/tinygo-keyboard を使う
 
 自作キーボードに必要な要素、というのは人によって違うと思います。
