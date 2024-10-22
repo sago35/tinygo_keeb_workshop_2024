@@ -621,6 +621,16 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./10_oled_rotated/
 $ tinygo flash --target waveshare-rp2040-zero --size short ./11_oled_animation/
 ```
 
+### 日本語を表示する
+
+現在 BDF と OTF/TTF フォントのいずれかが表示できます。  
+zero-kb02 のような 1bit color の小型ディスプレイだと BDF フォントが適しています。  
+以下にて使用することができます。  
+
+```shell
+$ tinygo flash --target waveshare-rp2040-zero --size short ./17_oled_japanese_font/
+```
+
 ## キー押下状態を取得する
 
 zero-kb02 は matrix と呼ばれる配線方法を使ってキーが接続されています。
