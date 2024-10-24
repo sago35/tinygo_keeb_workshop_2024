@@ -28,7 +28,7 @@ English version is below.
 | 13 | RP2040 Zero                     | 1    |
 | 14 | ロータリーエンコーダー          | 1    |
 | 15 | RGB LED                         | 12   | SK6812MINI-E (実装済み)
-| 16 | コム足                          | 4    |
+| 16 | ゴム足                          | 4    |
 | 17 | USB ケーブル (A to C)           | 1    |
 | 18 | さらねじ 2.1x10                 | 4    |
 | 19 | ケース                          | 1    | [stl](https://github.com/sago35/keyboards/tree/main/zero-kb02/stl)
