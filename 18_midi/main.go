@@ -1,9 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"machine"
 	"machine/usb/adc/midi"
 	"time"
+
+	"tinygo.org/x/drivers/encoders"
 )
 
 // Try it easily by opening the following site in Chrome.
@@ -75,7 +78,43 @@ func main() {
 	}
 	index := 0
 
+	machine.InitADC()
+
+	ax := machine.ADC{Pin: machine.GPIO29}
+	ax.Configure(machine.ADCConfig{})
+	ay := machine.ADC{Pin: machine.GPIO28}
+	ay.Configure(machine.ADCConfig{})
+
+	enc := encoders.NewQuadratureViaInterrupt(
+		machine.GPIO3,
+		machine.GPIO4,
+	)
+	enc.Configure(encoders.QuadratureConfig{
+		Precision: 4,
+	})
+	encOldValue := 0
+	pg := uint8(0)
+
 	for {
+		if newValue := enc.Position(); newValue != encOldValue {
+			fmt.Printf("%d %d\n", newValue, encOldValue)
+			x := newValue
+			for x < 0 {
+				x += 128
+			}
+			pg = uint8(x % 128)
+			m.ProgramChange(cable, channel, pg)
+			encOldValue = newValue
+		}
+
+		{
+			bend := ax.Get()
+			if 0x7800 <= bend && bend <= 0x8200 {
+				bend = 0x8000
+			}
+			bend = bend >> 2
+			m.PitchBend(cable, channel, bend)
+		}
 		current := button.Get()
 		if prev != current {
 			if current {
