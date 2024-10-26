@@ -72,7 +72,7 @@ func NewDisplayState(display *ssd1306.Device) *DisplayState {
 // ディスプレイ更新を最適化する関数
 func (ds *DisplayState) updateDisplay(count int, remainingTime int, testStatus string) {
 	if count != ds.lastCount || remainingTime != ds.lastTime || ds.needUpdate {
-		ds.display.ClearDisplay()
+		ds.display.ClearBuffer()
 		white := color.RGBA{R: 0xFF, G: 0xFF, B: 0xFF, A: 0xFF}
 
 		switch testStatus {
