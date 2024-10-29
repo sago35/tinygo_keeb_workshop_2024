@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"machine"
 	"machine/usb/adc/midi"
 	"time"
@@ -93,28 +92,35 @@ func main() {
 		Precision: 4,
 	})
 	encOldValue := 0
-	pg := uint8(0)
 
 	for {
-		if newValue := enc.Position(); newValue != encOldValue {
-			fmt.Printf("%d %d\n", newValue, encOldValue)
-			x := newValue
-			for x < 0 {
-				x += 128
+		{
+			x := ax.Get()
+			if 0x7800 <= x && x <= 0x8800 {
+				x = 0x8000
 			}
-			pg = uint8(x % 128)
-			m.ProgramChange(cable, channel, pg)
-			encOldValue = newValue
+			m.PitchBend(cable, channel, x>>2)
 		}
 
 		{
-			bend := ax.Get()
-			if 0x7800 <= bend && bend <= 0x8200 {
-				bend = 0x8000
+			y := ay.Get()
+			if 0x7800 <= y && y <= 0x8800 {
+				y = 0x8000
 			}
-			bend = bend >> 2
-			m.PitchBend(cable, channel, bend)
+			if y >= 0x8000 {
+				m.ControlChange(cable, channel, midi.CCModulationWheel, byte((y-0x8000)>>8))
+			}
 		}
+
+		if newValue := enc.Position(); newValue != encOldValue {
+			v := newValue
+			for v < 0 {
+				v += 128
+			}
+			m.ProgramChange(cable, channel, uint8(v)&0x7F)
+			encOldValue = newValue
+		}
+
 		current := button.Get()
 		if prev != current {
 			if current {
