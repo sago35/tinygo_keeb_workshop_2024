@@ -112,16 +112,32 @@ func main() {
 			}
 		}
 
+		current := button.Get()
 		if newValue := enc.Position(); newValue != encOldValue {
-			v := newValue
-			for v < 0 {
-				v += 128
+			if current {
+				if newValue < encOldValue {
+					if 12 <= notes[0] {
+						for i := range notes {
+							notes[i] -= 12
+						}
+					}
+				} else {
+					if notes[0] <= 96 {
+						for i := range notes {
+							notes[i] += 12
+						}
+					}
+				}
+			} else {
+				v := newValue
+				for v < 0 {
+					v += 128
+				}
+				m.ProgramChange(cable, channel, uint8(v)&0x7F)
 			}
-			m.ProgramChange(cable, channel, uint8(v)&0x7F)
 			encOldValue = newValue
 		}
 
-		current := button.Get()
 		if prev != current {
 			if current {
 				for _, note := range chords[index].notes {
