@@ -278,6 +278,23 @@ $TINYGOROOT は `tinygo env` で調べることができます。
 
 * https://github.com/tinygo-org/tinygo/issues/4519
 
+### macOS で 「ディスクの不正な取り出し」 の通知がたまっていくのを何とかしたい
+
+ターミナルを開いて以下を実行して再起動すると、通知が出なくなるようです。
+
+```
+$ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES && sudo pkill diskarbitrationd
+```
+
+元に戻したい場合は以下を実行して再起動してください。
+
+```
+$ sudo defaults delete /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification && sudo pkill diskarbitrationd
+```
+
+See: https://www.reddit.com/r/mac/comments/vsn1t6/how_to_disable_not_ejected_safely_notification_on/
+
+
 ## L チカ
 
 以下を実行してください。
