@@ -93,22 +93,35 @@ func main() {
 	})
 	encOldValue := 0
 
+	time.Sleep(2 * time.Second)
+	m.ControlChange(cable, channel, midi.CCModulationWheel, 0)
+	pcOfs := 0x1E
+	m.ProgramChange(cable, channel, uint8(pcOfs)) // Distortion Guitar
+
+	prevX := uint16(0)
+	prevY := uint16(0)
 	for {
 		{
 			x := ax.Get()
-			if 0x7800 <= x && x <= 0x8800 {
+			if 0x7000 <= x && x <= 0x9000 {
 				x = 0x8000
 			}
-			m.PitchBend(cable, channel, x>>2)
+			if prevX != x {
+				m.PitchBend(cable, channel, x>>2)
+				prevX = x
+			}
 		}
 
 		{
 			y := ay.Get()
-			if 0x7800 <= y && y <= 0x8800 {
+			if 0x7000 <= y && y <= 0x9000 {
 				y = 0x8000
 			}
 			if y >= 0x8000 {
-				m.ControlChange(cable, channel, midi.CCModulationWheel, byte((y-0x8000)>>8))
+				if prevY != y {
+					m.ControlChange(cable, channel, midi.CCModulationWheel, byte((y-0x8000)>>8))
+					prevY = y
+				}
 			}
 		}
 
@@ -133,7 +146,10 @@ func main() {
 				for v < 0 {
 					v += 128
 				}
-				m.ProgramChange(cable, channel, uint8(v)&0x7F)
+				// In the Windows environment, sending only a `ProgramChange`
+				// does not change the program, so a `ControlChange` is also sent.
+				m.ControlChange(cable, channel, midi.CCModulationWheel, 0)
+				m.ProgramChange(cable, channel, uint8(v+pcOfs)&0x7F)
 			}
 			encOldValue = newValue
 		}
