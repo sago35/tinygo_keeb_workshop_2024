@@ -761,6 +761,10 @@ $ tinygo flash --target waveshare-rp2040-zero --size short ./18_midi/
 
 * https://midi.city/
 
+Windows 環境では MIDI-OX を使うとよいでしょう。  
+
+* http://www.midiox.com/
+
 # sago35/tinygo-keyboard を使う
 
 自作キーボードに必要な要素、というのは人によって違うと思います。
