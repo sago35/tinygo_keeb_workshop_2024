@@ -94,9 +94,8 @@ func main() {
 	encOldValue := 0
 
 	time.Sleep(2 * time.Second)
-	m.ControlChange(cable, channel, midi.CCModulationWheel, 0)
 	pcOfs := 0x1E
-	m.ProgramChange(cable, channel, uint8(pcOfs)) // Distortion Guitar
+	m.Write(programChange(cable, channel, uint8(pcOfs))) // Distortion Guitar
 
 	prevX := uint16(0)
 	prevY := uint16(0)
@@ -146,10 +145,9 @@ func main() {
 				for v < 0 {
 					v += 128
 				}
-				// In the Windows environment, sending only a `ProgramChange`
-				// does not change the program, so a `ControlChange` is also sent.
-				m.ControlChange(cable, channel, midi.CCModulationWheel, 0)
-				m.ProgramChange(cable, channel, uint8(v+pcOfs)&0x7F)
+				// m.ProgramChange() sends a 3-byte packet, which does not work in some environments.
+				// Here, the programChange() function created within this source code will be used instead.
+				m.Write(programChange(cable, channel, uint8(v+pcOfs)&0x7F))
 			}
 			encOldValue = newValue
 		}
@@ -266,4 +264,11 @@ func updateState(s State, btn bool) State {
 		ret = s + 1
 	}
 	return ret
+}
+
+var pbuf [4]byte
+
+func programChange(cable, channel uint8, patch uint8) []byte {
+	pbuf[0], pbuf[1], pbuf[2], pbuf[3] = ((cable&0xf)<<4)|midi.CINProgramChange, midi.MsgProgramChange|((channel-1)&0xf), patch&0x7f, 0x00
+	return pbuf[:4]
 }
