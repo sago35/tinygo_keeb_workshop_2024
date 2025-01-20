@@ -275,6 +275,10 @@ Place the socket along the silk.
 
 ![](./images/bg11.jpg)
 
+The sockets circled in red in the photo below are in the opposite direction.
+
+![](./images/key_socket_miss.jpg)
+
 First, solder one side.
 Firmly heat the land (board side) and then melt the solder.
 Once the solder has melted, press the socket down with your finger while wearing the gauntlet.
