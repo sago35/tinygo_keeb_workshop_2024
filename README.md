@@ -1,8 +1,8 @@
-# tinygo_keeb_workshop_2024
+# tinygo-keeb/workshop
 
 ![](./images/zero-kb02.jpg)
 
-このページは 2024/08/04 からスタートする TinyGo Keeb Tour 2024 用の記事です。
+このページは 2024/08/04 からスタートした TinyGo Keeb Tour 用の記事です。
 不明点はこのリポジトリの Issue や [twitter:sago35tk](https://x.com/sago35tk) で質問いただければサポートします。
 
 ハードウェアの組み立ては以下を参照してください。
@@ -12,7 +12,7 @@
 
 このページへ QR コードはこちら。  
 
-![](./images/qr_tinygo_keeb_tour_2024_top.png)
+![](./images/qr_tinygo_keeb_workshop_top.png)
 
 # 環境設定
 
@@ -126,7 +126,7 @@ Vim (+ vim-lsp) の場合は `github.com/sago35/tinygo.vim` を使ってみて�
 
 # 開発対象
 
-TinyGo Keeb Tour 2024 では zero-kb02 という自作キーボード／マクロパッドを使用します。
+TinyGo Keeb Tour では zero-kb02 という自作キーボード／マクロパッドを使用します。
 マイコンは RP2040 (Cortex M0+) で、マイコンボードは [Waveshare RP2040-Zero](https://www.waveshare.com/rp2040-zero.htm) を使用しています。
 
 ![](./images/zero-kb02.jpg)
@@ -163,9 +163,9 @@ TinyGo Keeb Tour 2024 では zero-kb02 という自作キーボード／マク�
 ソースコードを変更してみる場合は、ローカルのコードを修正してください。
 
 ```
-$ git clone https://github.com/sago35/tinygo_keeb_workshop_2024
+$ git clone https://github.com/tinygo-keeb/workshop
 
-$ cd tinygo_keeb_workshop_2024
+$ cd workshop
 
 # VS Code などを立ち上げる
 $ code .
@@ -181,7 +181,7 @@ RP2040 搭載のボードは BOOT / BOOTSEL と呼ばれているボタンを押
 
 ここでは以下を書き込みしてみてください。
 
-* [00_basic.uf2](https://github.com/sago35/tinygo_keeb_workshop_2024/releases/download/0.1.0/00_basic.uf2)
+* [00_basic.uf2](https://github.com/tinygo-keeb/workshop/releases/download/0.1.0/00_basic.uf2)
 
 キースイッチ部の LED が光っていたら書き込み成功です。
 
