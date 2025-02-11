@@ -294,6 +294,15 @@ $ sudo defaults delete /Library/Preferences/SystemConfiguration/com.apple.DiskAr
 
 See: https://www.reddit.com/r/mac/comments/vsn1t6/how_to_disable_not_ejected_safely_notification_on/
 
+### どうしても書込みが出来ない
+
+以下の可能性があります。
+
+* USB ケーブルに問題がある
+  * `tinygo ports` で認識するか、あるいはドライブとして認識するかを確認する
+* 外付けドライブへの書き込みが制限されている
+  * 会社のパソコン等はセキュリティの兼ね合いで書き込みが制限されているケースがある
+  * この場合、 tinygo flash も uf2 のコピーもできない
 
 ## L チカ
 
