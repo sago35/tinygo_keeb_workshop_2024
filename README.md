@@ -48,14 +48,24 @@ TinyGo は基本的に最新および直前 Version の Go と組み合わせて
 ```
 $ tinygo version
 tinygo version 0.35.0 windows/amd64 (using go version go1.23.6 and LLVM version 18.1.2)
+```
 
+```
 $ tinygo build -o out.uf2 --target waveshare-rp2040-zero --size short examples/serial
    code    data     bss |   flash     ram
    7836     108    3152 |    7944    3260
+```
 
+```
 $ tinygo flash --target waveshare-rp2040-zero --size short examples/serial
+   code    data     bss |   flash     ram
+   7932     108    3168 |    8040    3276
 
 $ tinygo monitor --target waveshare-rp2040-zero
+Connected to COM4. Press Ctrl-C to exit.
+hello world!
+hello world!
+hello world!
 ```
 
 ### Windows + WSL2
