@@ -36,8 +36,7 @@ TinyGo は基本的に最新および直前 Version の Go と組み合わせて
 
 | TinyGo | 対応する Go |
 | ------ | ----------- |
-| 0.32.0 | 1.19 - 1.22 |
-| 0.33.0 | 1.23 - 1.22 |
+| 0.35.0 | 1.23 - 1.22 |
 
 それぞれの実行体に PATH が通っていれば使うことができます。
 少し Version が古いですが以下も参考になると思います。
@@ -48,11 +47,15 @@ TinyGo は基本的に最新および直前 Version の Go と組み合わせて
 
 ```
 $ tinygo version
-tinygo version 0.33.0 windows/amd64 (using go version go1.22.5 and LLVM version 18.1.2)
+tinygo version 0.35.0 windows/amd64 (using go version go1.23.6 and LLVM version 18.1.2)
 
 $ tinygo build -o out.uf2 --target waveshare-rp2040-zero --size short examples/serial
    code    data     bss |   flash     ram
    7836     108    3152 |    7944    3260
+
+$ tinygo flash --target waveshare-rp2040-zero --size short examples/serial
+
+$ tinygo monitor --target waveshare-rp2040-zero
 ```
 
 ### Windows + WSL2
