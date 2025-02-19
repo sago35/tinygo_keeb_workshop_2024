@@ -854,6 +854,9 @@ COM7                 2E8A:0003 waveshare-rp2040-zero
 * https://x.com/sago35tk/status/1830208709471223966
 * https://x.com/Ryu_07_29/status/1847921967070163377
 * [./19_redkey/](./19_redkey/)
+* https://github.com/conejoninja/midikeeb
+* https://x.com/triring/status/1891448348818776323
+* https://github.com/sago35/koebiten
 
 # その他 Tips など
 
